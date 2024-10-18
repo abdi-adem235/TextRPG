@@ -1,0 +1,5 @@
+Stats for sdfs: 
+Name: sdfs
+Level: 1
+Exp: 0
+Enemies defeated: 0
