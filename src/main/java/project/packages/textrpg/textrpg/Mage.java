@@ -42,7 +42,7 @@ public class Mage extends Player {
 	}
 	
 	@Override
-	public void encounter(Player player, Enemy enemy) {
+	public void encounter(Player player, Enemy enemy, RpgMap map, EnemyGenerator enemygenerator) {
 		
 		Map<Double, String> encounterMap = new HashMap<>();
 		
@@ -52,28 +52,34 @@ public class Mage extends Player {
 
 
   
-		if(encounterType <= 60) {
-			System.out.println("A " +enemy.name+ " has appeared!!!");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			while (enemy.getHealth() > 0 && player.getHp() > 0) {
-				player.attack(enemy,player);
+	if(encounterType < 50) {
+			
+			enemygenerator.generateEnemy(player, map);
+				
+				System.out.println("A " +enemy.name+ " has appeared!!!");
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				enemy.attackPlayer(player);
-			}
+				while (enemy.getHealth() > 0 && player.getHp() > 0) {
+					player.attack(enemy,player);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					enemy.attackPlayer(player);
+				}
 			
-		}
+			
+			
+			
+			}
 			
 		if(encounterType <= 25) {
 			System.out.println("You have found a treasure chest and have been granted some exp!");
-			player.gainExp(20);
+			player.gainExp(40);
 		}
 			
 		else if(encounterType == 15) {

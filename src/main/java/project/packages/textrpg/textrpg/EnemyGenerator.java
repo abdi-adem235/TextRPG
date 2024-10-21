@@ -12,7 +12,7 @@ public class EnemyGenerator {
 	
 	static Map<Enemy, String> enemyMap = new HashMap<>();
 	
-	EnemyGenerator(){
+	public EnemyGenerator(){
 		
 		enemyMap.put(new Enemy(100,"Forest Elf",15), "Forest");
 		enemyMap.put(new Enemy(100,"Wyvern",20), "Valley");
@@ -22,7 +22,7 @@ public class EnemyGenerator {
 	}
 	
 	
-	public void generateEnemy(String region, Player player, RpgMap map){
+	public void generateEnemy(Player player, RpgMap map, EnemyGenerator enemygenerator){
 		
 		
 //		switch(region) {
@@ -46,10 +46,16 @@ public class EnemyGenerator {
       	}
       	
       
-	}
 	
-	public List<Enemy> getEnemies() {
+      }
+      
+	}
+	public Map<Enemy,String> getEnemies() {
         return enemyMap;
     }
+      
 
+
+	
+	
 }

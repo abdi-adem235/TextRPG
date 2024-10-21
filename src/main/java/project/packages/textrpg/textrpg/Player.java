@@ -60,6 +60,10 @@ public abstract class Player {
 			System.out.println("You now have " +this.hp+ "total hp!");
 			
 		}
+		else if (this.hp + gain > 100){
+			this.hp = this.hp +((this.hp+gain)-100);
+			System.out.println("You now have the maxiumum amount of hp");
+		}
 		else {
 			System.out.println("You have the maxiumum amount of hp");
 			this.hp = hp;
@@ -120,15 +124,15 @@ public abstract class Player {
 		return this.enemiesDefeated;
 	}
 
-	public void setEnemiesDefeated(int enemiesDefeated) {
-		this.enemiesDefeated = enemiesDefeated;
-		
-	public void enemiesDefeatedCounter() {
-		this.enemiesDefeated = this.getEnemiesDefeated() + 1;
-		return enemiesDefeated;
-			
-		}
+	public void setEnemiesDefeated() {
+		this.enemiesDefeated += 1;
 	}
+		
+	public void incrementEnemiesDefeated() {
+		this.enemiesDefeated += 1;
+			
+	}
+	
 	
 	public void usePotion(int potion) {
 		if(this.hp <= 50) {
@@ -213,9 +217,9 @@ public void movePlayer(char direction) {
 
 	public abstract void attack(Enemy enemy, Player player);
 	
-	public abstract void defend(Enemy enemy, Player player);
+	//public abstract void defend(Enemy enemy, Player player);
 	
-	public abstract void encounter(Player player, Enemy enemy);
+	public abstract void encounter(Player player, Enemy enemy, RpgMap map);
 	
 	public void updateQuest(String questName) {
 	        Quest.updateQuest(questName);
@@ -225,7 +229,7 @@ public void movePlayer(char direction) {
 		if(player.getX() == 4 && player.getY() == 3)
 		System.out.println("You have encountered the boss!!!");
 		Boss boss = new Boss();
-		player.encounter(player, boss);
+		player.encounter(player, boss,map,enemygenerator);
 	}
 	
 	public void showStats() {
@@ -237,6 +241,7 @@ public void movePlayer(char direction) {
 				
 				fWriter.write("Stats for " +this.name+ ": \n");
 				fWriter.write("Name: " +this.name+ "\n" );
+				fWriter.write("Job: " +this.getJob()+ "\n");
 				fWriter.write("Level: " +this.level+ "\n");
 				fWriter.write("Exp: " +this.exp+ "\n");
 				fWriter.write("Enemies defeated: " +this.enemiesDefeated);
@@ -245,6 +250,7 @@ public void movePlayer(char direction) {
 				
 				System.out.println("Stats for " +this.name+ ": \n");
 				System.out.println("Name: " +this.name+ "\n");
+				System.out.println("Job: " +this.getJob()+ "\n");
 				System.out.println("Level: " +this.level+ "\n");
 				System.out.println("Exp: " +this.exp+ "\n");
 				System.out.println("Enemies defeated: " +this.enemiesDefeated);
@@ -281,7 +287,7 @@ public void movePlayer(char direction) {
 		if(this.exp >= 100) {
 			this.level += 1;
 			System.out.println(this.name+ " has leveled up and is now level" +this.level + "!!! ");
-			this.exp = 0;
+			this.exp = this.exp - 100;
 		}
 	}
 		

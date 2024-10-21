@@ -45,24 +45,31 @@ public class Thief extends Player {
 
 
   
-		if(encounterType <= 60) {
-			System.out.println("A " +enemy.name+ " has appeared!!!");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			while (enemy.getHealth() > 0 && player.getHp() > 0) {
-				player.attack(enemy,player);
+	if(encounterType < 50) {
+			
+			enemygenerator.generateEnemy(player, map);
+				
+				System.out.println("A " +enemy.name+ " has appeared!!!");
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				enemy.attackPlayer(player);
+				while (enemy.getHealth() > 0 && player.getHp() > 0) {
+					player.attack(enemy,player);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					enemy.attackPlayer(player);
+				}
+			
+			
+			
+			
 			}
 			
-		}
 			
 		if(encounterType <= 25) {
 			System.out.println("You have found a treasure chest and have been granted some exp!");
@@ -71,7 +78,7 @@ public class Thief extends Player {
 			
 		else if(encounterType == 15) {
 			System.out.println("You have found a healing well and have replenished some hp!");
-			player.gainHP(20);
+			player.gainHP(40);
 		}
 		
 		

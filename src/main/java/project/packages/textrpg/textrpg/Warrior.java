@@ -5,10 +5,15 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
 public class Warrior extends Player{
 	
 	
-	static String weapon = "sword";
+	String weapon = "sword";
 	String type = "warrior";
 	
 	public Warrior(String name, int x, int y) {
@@ -20,7 +25,7 @@ public class Warrior extends Player{
 	
 	@Override
 	public void attack(Enemy enemy, Player player) {
-		System.out.println(this.name+ " attacks with their " +Warrior.weapon+ "!!!");
+		System.out.println(this.name+ " attacks with their " +this.getWeapon()+ "!!!");
 		enemy.takeDamage(this.attack);
 		if(enemy.health != 0) {
 			System.out.println(enemy.name + " has " +(enemy.health)+ " health remaining");
@@ -28,7 +33,7 @@ public class Warrior extends Player{
 		
 		else if(enemy.getHealth() == 0) {
 			System.out.println("You have defeated the" +enemy.getName());
-			enemiesDefeated++;
+			this.incrementEnemiesDefeated();
 			player.gainExp(20);
 		}
 			
@@ -38,16 +43,16 @@ public class Warrior extends Player{
 			
 		}
 	
-	@Override
-	public void defend(Enemy enemy, Player player) {
-		
-		System.out.println(this.name+ " defends");
-		
-		if(this.type == "warrior" && enemy.name.equals("goblin")) {
-			enemy.damage = (int) ((int)enemy.damage*0.75);
-			
-		
-		}
+//	@Override
+//	public void defend(Enemy enemy, Player player) {
+//		
+//		System.out.println(this.name+ " defends");
+//		
+//		if(this.type == "warrior" && enemy.name.equals("goblin")) {
+//			enemy.damage = (int) ((int)enemy.damage*0.75);
+//			
+//		
+//		}
 			
 	
 	@Override
@@ -58,20 +63,12 @@ public class Warrior extends Player{
 		Random random = new Random();
 		int encounterType = random.nextInt(100);
 		//String regionCoordinates = RpgMap.getRegion(player.getX(), player.getY());
-
+		EnemyGenerator enemygenerator = new EnemyGenerator();
 
   
-		if(encounterType <= 60) {
-			if(map.getRegion(player.getX(),player.getY()).equals("Forest")) {
-				
-				enemy = new Enemy(100,"Goblin",15);
-				
-			}
+		if(encounterType < 50) {
 			
-			else if(map.getRegion(player.getX(),player.getY()).equals("Forest")) {
-				
-				enemy = new Enemy(100,"Goblin",15);
-			}
+			enemygenerator.generateEnemy(player, map, enemygenerator);
 				
 				System.out.println("A " +enemy.name+ " has appeared!!!");
 				try {
@@ -94,7 +91,7 @@ public class Warrior extends Player{
 			
 			}
 			
-		}
+		
 			
 		
 			
@@ -112,6 +109,8 @@ public class Warrior extends Player{
         
         System.out.print("Player " +player.name+ " (Level" +this.level+ ") has " +player.hp+ "/100 health");
         System.out.println(" and "+player.exp+ "/100 exp");
+        
+	}
 //		encounterMap.put(0.45, "An" +enemy.name+ " has appeared!");
 //		encounterMap.put(0.25, "You have found a healing well and have replenished some hp!");
 //		encounterMap.put(0.30, "You have found a treasure chest and have been granted some exp!");
@@ -133,7 +132,7 @@ public class Warrior extends Player{
 //        	else if(entry.getKey() == 0.30) {
 //        		System.out.println(entry.getValue());
 //        	}
-        }
+        
 	
 //	
 //	@Override
@@ -152,23 +151,29 @@ public class Warrior extends Player{
 	public String getJob() {
 		
 		if(this.level >= 0 && this.level <3) {
-			return "Warrior"; 
+			return "Warrior";
 		}
 		else if(this.level >=3 && this.level < 6) {
+			updateWeapon("Broadsword");
 			return "Paladin";
 		}
 		else if(this.level >=6) {
+			updateWeapon("Legendary Greatsword");
 			return "Eternal Knight";
 		}
 		return "Unknown";
+		
 	}
 
-	public static String getWeapon() {
-		return weapon;
+
+	public void updateWeapon(String weapon) {
+		this.weapon = weapon;
+	}
+	
+	public String getWeapon() {
+		return this.weapon;
 	}
 
-	public static void setWeapon(String weapon) {
-		Warrior.weapon = weapon;
-	}
 
 }
+	
