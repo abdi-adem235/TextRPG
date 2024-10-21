@@ -50,7 +50,7 @@ public class LoadMenu {
 							System.out.println(dialogue.getDialogue(player));
 							System.out.println(player.getCoordinates(player.x,player.y));
 							System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
-							player.encounter(player, map, enemygenerator);
+							player.encounter(player,map);
 						
 						}
 						break;

@@ -10,19 +10,19 @@ import java.util.Set;
 
 public class EnemyGenerator {
 	
-	static Map<Enemy, String> enemyMap = new HashMap<>();
+	static Map<String, Enemy> enemyMap = new HashMap<>();
 	
 	public EnemyGenerator(){
 		
-		enemyMap.put(new Enemy(100,"Forest Elf",15), "Forest");
-		enemyMap.put(new Enemy(100,"Wyvern",20), "Valley");
-		enemyMap.put(new Enemy(100,"Golem",20), "Cave");
+		enemyMap.put("Forest", new Enemy(100,"Forest Elf",15));
+		enemyMap.put("valley", new Enemy(100,"Wyvern",20));
+		enemyMap.put("Cave", new Enemy(100,"Golem",20));
 		
 		
 	}
 	
 	
-	public void generateEnemy(Player player, RpgMap map, EnemyGenerator enemygenerator){
+	public Enemy generateEnemy(Player player, RpgMap map, EnemyGenerator enemygenerator){
 		
 		
 //		switch(region) {
@@ -34,23 +34,26 @@ public class EnemyGenerator {
 //		case "Cave" -> enemyList.add(new Enemy(100,"Golem",20));
 //		
 //		}
-		
+		Enemy generatedEnemy = null;
 		
 		 // Using entrySet() to get keys and values
-      Set<Map.Entry<Enemy, String>> entries = enemyMap.entrySet();
-      for (Map.Entry<Enemy, String> entry : entries) {
-      	if(entry.getValue().equals(map.getRegion(player.getX(),player.getY()))) {
-      		Enemy enemy = entry.getKey();
-      		player.attack(enemy,player);
+      Set<Map.Entry<String, Enemy>> entries = enemyMap.entrySet();
+      for (Map.Entry<String, Enemy> entry : entries) {
+      	if(entry.getKey().equals(map.getRegion(player.getX(),player.getY()))) {
+      		generatedEnemy = entry.getValue();
+      		player.encounter(player, map);
+      		//player.attack(enemy,player);
+      		System.out.println("A " +generatedEnemy.name+ " has appeared!!!");
       		
       	}
       	
       
 	
       }
+	return generatedEnemy;
       
 	}
-	public Map<Enemy,String> getEnemies() {
+	public Map<String,Enemy> getEnemies() {
         return enemyMap;
     }
       

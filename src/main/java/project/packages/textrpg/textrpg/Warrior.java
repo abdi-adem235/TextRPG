@@ -56,7 +56,7 @@ public class Warrior extends Player{
 			
 	
 	@Override
-	public void encounter(Player player, Enemy enemy, RpgMap map) {
+	public void encounter(Player player, RpgMap map) {
 		
 		Map<Double, String> encounterMap = new HashMap<>();
 		
@@ -68,9 +68,9 @@ public class Warrior extends Player{
   
 		if(encounterType < 50) {
 			
-			enemygenerator.generateEnemy(player, map, enemygenerator);
+			Enemy enemy = enemygenerator.generateEnemy(player, map, enemygenerator);
 				
-				System.out.println("A " +enemy.name+ " has appeared!!!");
+				
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {

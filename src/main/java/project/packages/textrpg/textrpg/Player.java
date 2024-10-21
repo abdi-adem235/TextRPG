@@ -219,7 +219,7 @@ public void movePlayer(char direction) {
 	
 	//public abstract void defend(Enemy enemy, Player player);
 	
-	public abstract void encounter(Player player, Enemy enemy, RpgMap map);
+	public abstract void encounter(Player player, RpgMap map);
 	
 	public void updateQuest(String questName) {
 	        Quest.updateQuest(questName);
