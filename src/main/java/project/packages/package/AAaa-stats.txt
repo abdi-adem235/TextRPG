@@ -1,5 +1,0 @@
-Stats for AAaa: 
-Name: AAaa
-Level: 1
-Exp: 0
-Enemies defeated: 0

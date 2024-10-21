@@ -1,0 +1,5 @@
+Stats for sfsdf: 
+Name: sfsdf
+Level: 1
+Exp: 0
+Enemies defeated: 0
