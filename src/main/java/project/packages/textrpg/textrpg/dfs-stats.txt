@@ -1,0 +1,6 @@
+Stats for dfs: 
+Name: dfs
+Job: Warrior
+Level: 2
+Exp: 60
+Enemies defeated: 5

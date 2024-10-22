@@ -1,0 +1,6 @@
+Stats for saffsd: 
+Name: saffsd
+Job: Warrior
+Level: 1
+Exp: 80
+Enemies defeated: 2

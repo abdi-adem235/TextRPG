@@ -154,7 +154,7 @@ public void movePlayer(char direction) {
 			switch(direction) {
 		
 		
-				case 'N' -> {
+				case 'N','n' -> {
 				if(this.y+1 > final_Y) {
 					System.out.println("Can't move north");
 				}
@@ -163,7 +163,7 @@ public void movePlayer(char direction) {
 					validMove = true;
 				}
 				}
-				case 'E' -> {
+				case 'E','e' -> {
 				if(this.x+1 > final_X) {
 					System.out.println("Can't move east");
 				}
@@ -172,7 +172,7 @@ public void movePlayer(char direction) {
 					validMove = true;
 				}
 				}
-				case 'S' -> {
+				case 'S','s' -> {
 				if(this.y-1 < min_Y) {
 					System.out.println("Can't move south");
 				}
@@ -181,7 +181,7 @@ public void movePlayer(char direction) {
 					validMove = true;
 				}
 				}
-				case 'W' ->{
+				case 'W','w' ->{
 				if(this.x-1 < min_X) {
 					System.out.println("Can't move west");
 				}
@@ -225,12 +225,33 @@ public void movePlayer(char direction) {
 	        Quest.updateQuest(questName);
 	    }
 	
-	public void triggerBoss(Player player) {
-		if(player.getX() == 4 && player.getY() == 3)
-		System.out.println("You have encountered the boss!!!");
-		Boss boss = new Boss();
-		player.encounter(player, boss,map,enemygenerator);
-	}
+//	public void triggerBoss(Player player) {
+//		if(player.getX() == 4 && player.getY() == 3)
+//		System.out.println("You have encountered the boss!!!");
+//		Boss boss = new Boss();
+//		player.encounterBoss(boss,player);
+//	}
+	//method to trigger boss
+	public void encounterBoss(Player player) {
+		if (player.getX() == 4 && player.getY() == 3) {
+			Boss boss = new Boss();
+			while(this.getHp() > 0 && boss.getHp() > 0) {
+				player.attack(boss,player);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				boss.attackPlayer(player);
+			}
+			
+			System.out.println("Congratulations! You have defeated the " + boss.getName() + "!");
+            player.incrementEnemiesDefeated();
+            player.gainExp(50);
+            Quest.questThree(player,boss);
+				
+			}
+		}
 	
 	public void showStats() {
 		try 
@@ -288,6 +309,7 @@ public void movePlayer(char direction) {
 			this.level += 1;
 			System.out.println(this.name+ " has leveled up and is now level" +this.level + "!!! ");
 			this.exp = this.exp - 100;
+			this.hp = 100;
 		}
 	}
 		

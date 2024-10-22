@@ -140,6 +140,8 @@ public class Warrior extends Player{
 //		System.out.println(this.name+ " attacks with their " +Warrior.weapon+ "!!!");
 //	}
 	
+	
+	
 	public int getExp(){
 		if(this.level == 0) {
 			this.exp = 0;

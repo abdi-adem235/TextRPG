@@ -15,7 +15,7 @@ public class EnemyGenerator {
 	public EnemyGenerator(){
 		
 		enemyMap.put("Forest", new Enemy(100,"Forest Elf",15));
-		enemyMap.put("valley", new Enemy(100,"Wyvern",20));
+		enemyMap.put("Valley", new Enemy(100,"Wyvern",20));
 		enemyMap.put("Cave", new Enemy(100,"Golem",20));
 		
 		
@@ -41,9 +41,10 @@ public class EnemyGenerator {
       for (Map.Entry<String, Enemy> entry : entries) {
       	if(entry.getKey().equals(map.getRegion(player.getX(),player.getY()))) {
       		generatedEnemy = entry.getValue();
-      		player.encounter(player, map);
+      		//player.encounter(player, map);
       		//player.attack(enemy,player);
       		System.out.println("A " +generatedEnemy.name+ " has appeared!!!");
+      		break;
       		
       	}
       	

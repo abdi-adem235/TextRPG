@@ -2,6 +2,7 @@ package project.packages.textrpg.textrpg;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 
@@ -10,7 +11,7 @@ public class Enemy {
 		Integer health;
 		String name;
 		//Player player;
-		int damage = 15;
+		int damage;
 		int exp = 20;
 		
 		public Enemy(Integer health, String name, int damage) {
@@ -28,8 +29,11 @@ public class Enemy {
 		}
 		
 		void attackPlayer(Player player) {
+			
+	        Random random = new Random();
+	        int damage = random.nextInt(16);
 			player.hp -= damage;
-			System.out.println("Player " +player.name+ " has taken " +this.damage+ " and has " +player.hp+ " remaining");
+			System.out.println("Player " +player.name+ " has taken " +damage+ " and has " +player.hp+ " remaining");
 			
 		}
 		

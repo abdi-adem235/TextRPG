@@ -44,18 +44,18 @@ public class Quest {
 	public static void questOne(Player player) {
 		if(player.getX() == 2 && player.getY() == 2) {
 			System.out.println("You have completed the quest!!");
-			updateQuest("Defeat 3 enemies");
+			updateQuest("Find the Stolen Emerald!!!");
 		}
 	}
 	
 	public static void questTwo(Player player) {
-		if(player.getEnemiesDefeated() == 3) {
+		if(player.getEnemiesDefeated() > 3) {
 			System.out.println("You have completed the quest!!");
 			updateQuest("Defeat 3 enemies");
 		}
 	}
 	
-	public static void questThree(Player player, Boss boss) {
+	public static void questThree(Player player,Boss boss) {
 		if(boss.getHealth() <= 0) {
 			System.out.println("You have completed the quest!!");
 			updateQuest("Defeat the boss");
@@ -68,6 +68,7 @@ public class Quest {
 	}
 	
 	public Boolean questCompleted() {
+		this.questCompleted = true;
 		return questCompleted;
 	}
 	
@@ -77,6 +78,7 @@ public class Quest {
 	            if (quest.getName().equalsIgnoreCase(questName)) {
 	                quest.questCompleted();
 	                System.out.println("Quest '" + questName + "' has been completed.");
+	                break;
 	        
 	            }
 	        }

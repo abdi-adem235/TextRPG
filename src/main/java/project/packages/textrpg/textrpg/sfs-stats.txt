@@ -1,0 +1,6 @@
+Stats for sfs: 
+Name: sfs
+Job: Warrior
+Level: 2
+Exp: 40
+Enemies defeated: 4

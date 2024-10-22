@@ -2,5 +2,5 @@ Stats for sdfsdf:
 Name: sdfsdf
 Job: Warrior
 Level: 1
-Exp: 0
-Enemies defeated: 0
+Exp: 40
+Enemies defeated: 1

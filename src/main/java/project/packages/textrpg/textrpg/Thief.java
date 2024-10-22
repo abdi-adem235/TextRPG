@@ -35,21 +35,21 @@ public class Thief extends Player {
 	}
 	
 	@Override
-	public void encounter(Player player, Enemy enemy) {
+	public void encounter(Player player, RpgMap map) {
 		
 		Map<Double, String> encounterMap = new HashMap<>();
 		
 		Random random = new Random();
 		int encounterType = random.nextInt(100);
 		
+		EnemyGenerator enemygenerator = new EnemyGenerator();
 
-
-  
-	if(encounterType < 50) {
+		  
+		if(encounterType < 50) {
 			
-			enemygenerator.generateEnemy(player, map);
+			Enemy enemy = enemygenerator.generateEnemy(player, map, enemygenerator);
 				
-				System.out.println("A " +enemy.name+ " has appeared!!!");
+				
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
@@ -70,7 +70,12 @@ public class Thief extends Player {
 			
 			}
 			
+		
 			
+		
+
+  
+	
 		if(encounterType <= 25) {
 			System.out.println("You have found a treasure chest and have been granted some exp!");
 			player.gainExp(20);

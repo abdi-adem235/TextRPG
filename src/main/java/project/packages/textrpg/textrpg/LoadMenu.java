@@ -16,14 +16,16 @@ public class LoadMenu {
 	
 	
 	public void DisplayMenu(Player player, RpgMap map, Dialogue dialogue) {
-		
-		while(true) {
+		boolean loop = false;
+		while(!loop) {
 			
-			if(player.getHp() <= 0) {
-				break;
-			}
-			
-			else {
+//			if(player.getHp() <= 0) {
+//				System.out.println("You have died......\n");
+//				System.out.println("You have died......\n");
+//				break;
+//			}
+//			
+//			else {
 			
 					try {
 						System.out.println("Please select from the following options\n");
@@ -50,7 +52,12 @@ public class LoadMenu {
 							System.out.println(dialogue.getDialogue(player));
 							System.out.println(player.getCoordinates(player.x,player.y));
 							System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
-							player.encounter(player,map);
+							if (map.getRegion(player.getX(), player.getY()).equalsIgnoreCase("Boss Zone")) {
+	                               player.encounterBoss(player);
+	                            } 
+							else {
+	                                player.encounter(player, map);
+	                            }
 						
 						}
 						break;
@@ -71,7 +78,13 @@ public class LoadMenu {
 						scanner.nextLine();
 					}
 					
-			}
+					if(player.getHp() <= 0) {
+						System.out.println("you have died.....");
+						loop = true;
+					}
+					 
+					
+//			}
 			
 		
 		
