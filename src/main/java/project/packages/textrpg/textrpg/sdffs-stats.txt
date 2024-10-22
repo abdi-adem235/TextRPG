@@ -1,5 +1,0 @@
-Stats for sdffs: 
-Name: sdffs
-Level: 1
-Exp: 0
-Enemies defeated: 0

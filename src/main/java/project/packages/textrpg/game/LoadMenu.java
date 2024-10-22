@@ -1,7 +1,13 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.game;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import project.packages.textrpg.characters.Player;
+import project.packages.textrpg.ingame.Dialogue;
+import project.packages.textrpg.ingame.Quest;
+import project.packages.textrpg.ingame.RpgMap;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -44,14 +50,14 @@ public class LoadMenu {
 						break;
 						case 2 : {
 						
-							System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
+							System.out.println("You are now in the "+map.getRegion(player.getX(),player.getY())+ " region");
 							System.out.println("Please enter a direction: 'N', 'S', 'E', 'W' ");
 							char direction = scanner.next().toUpperCase().charAt(0);
 							//scanner.nextLine();
 							player.movePlayer(direction);
 							System.out.println(dialogue.getDialogue(player));
-							System.out.println(player.getCoordinates(player.x,player.y));
-							System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
+							System.out.println(player.getCoordinates(player.getX(),player.getY()));
+							System.out.println("You are now in the "+map.getRegion(player.getX(),player.getY())+ " region");
 							if (map.getRegion(player.getX(), player.getY()).equalsIgnoreCase("Boss Zone")) {
 	                               player.encounterBoss(player);
 	                            } 

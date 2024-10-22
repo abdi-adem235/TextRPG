@@ -1,6 +1,15 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.game;
 
 import java.util.Scanner;
+
+import project.packages.textrpg.Boss;
+import project.packages.textrpg.characters.Mage;
+import project.packages.textrpg.characters.Player;
+import project.packages.textrpg.characters.Thief;
+import project.packages.textrpg.characters.Warrior;
+import project.packages.textrpg.ingame.Dialogue;
+import project.packages.textrpg.ingame.Quest;
+import project.packages.textrpg.ingame.RpgMap;
 
 
 
@@ -8,7 +17,7 @@ public class Main {
 	
 	public static void main(String args []) {
 		
-		
+		//Initialize rpg map objects (player, map, menu, dialogue, quest, boss)
 		RpgMap map = new RpgMap();
 		Player player = null;
 		LoadMenu menu = new LoadMenu();
@@ -16,14 +25,7 @@ public class Main {
 		Quest.initializeQuests();
 		Boss boss = new Boss();
 		
-		//Warrior warrior = new Warrior("AAaa", 0, 1);
-		//Mage mage = new Mage("ddsafs", 0, 1);
 		
-		//warrior.attack();
-		
-		//warrior.showStats();
-		
-		//System.out.println(mage.getJob());
 		
 		//prompt user for user name, password validation
 		
@@ -85,26 +87,6 @@ public class Main {
 			}
 		
 		
-		
-			
-			
-			
-//			    Enemy goblin = new Enemy(100,"Goblin",15);
-//				System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
-//				System.out.println("Please enter a directiom: 'N', 'S', 'E', 'W' ");
-//				char direction = sc.next().charAt(0);
-//				player.movePlayer(direction);
-//				System.out.println(player.getCoordinates(player.x,player.y));
-//				System.out.println("You are now in the "+map.getRegion(player.x,player.y)+ " region");
-//				player.attack(goblin);
-//				goblin.attackPlayer(player);
-//				player.encounter(player, goblin);
-//				System.out.println("Player" +player.name+ "has" +player.hp+ "health remaining.");
-//				player.triggerBoss(player);
-//				should have triggerBoss method in player class and within encounter method 
-				
-				
-//			while(gameLoop) {
 				
 				menu.DisplayMenu(player,map,dialogue);
 				player.encounterBoss(player);
@@ -112,38 +94,15 @@ public class Main {
 				Quest.questTwo(player);
 				Quest.questThree(player,boss);
 				
-//				if (player.getHp() <= 0) {
-//		                System.out.println("You have died.....");
-//		                gameLoop = false;
-//		            }
-			
-		
-		
-//			}
-			
-			
-		
-			
-		//}
-		
-		
-		
-		//prompt user to create class
-		
-		//give beginning dialogue
-		
-		//prompt user to pick direction
-		
-		//
-		
 
-	}
 		
-		player.showStats();
-		sc.close();
+		}
+		
+				player.showStats();
+				sc.close();
 
 	
-}
+	}
 	
 	
 }

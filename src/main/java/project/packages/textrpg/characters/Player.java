@@ -1,9 +1,14 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.characters;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import project.packages.textrpg.Boss;
+import project.packages.textrpg.ingame.Quest;
+import project.packages.textrpg.ingame.RpgMap;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -256,7 +261,7 @@ public void movePlayer(char direction) {
 	public void showStats() {
 		try 
 			{
-				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg/textrpg/" +this.name+ "-stats.txt");
+				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg" +this.name+ "-stats.txt");
 				
 				//write into file
 				
@@ -264,6 +269,7 @@ public void movePlayer(char direction) {
 				fWriter.write("Name: " +this.name+ "\n" );
 				fWriter.write("Job: " +this.getJob()+ "\n");
 				fWriter.write("Level: " +this.level+ "\n");
+				fWriter.write("Health: " +this.getHp()+ "\n");
 				fWriter.write("Exp: " +this.exp+ "\n");
 				fWriter.write("Enemies defeated: " +this.enemiesDefeated);
 				
@@ -273,6 +279,7 @@ public void movePlayer(char direction) {
 				System.out.println("Name: " +this.name+ "\n");
 				System.out.println("Job: " +this.getJob()+ "\n");
 				System.out.println("Level: " +this.level+ "\n");
+				System.out.println("Health: " +this.getHp()+ "\n");
 				System.out.println("Exp: " +this.exp+ "\n");
 				System.out.println("Enemies defeated: " +this.enemiesDefeated);
 				
@@ -301,6 +308,14 @@ public void movePlayer(char direction) {
 //		}
 //	}
 	
+	public int getAttack() {
+		return attack;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
 	public void gainExp(int expGain) {
 		this.exp+= expGain;
 		System.out.println(this.name+ "gained " +expGain+ " exp and now has " +this.exp+ " exp!");

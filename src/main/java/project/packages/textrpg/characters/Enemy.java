@@ -1,4 +1,4 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.characters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Enemy {
 		Integer health;
 		String name;
 		//Player player;
-		int damage;
+		protected int damage;
 		int exp = 20;
 		
 		public Enemy(Integer health, String name, int damage) {
@@ -28,7 +28,7 @@ public class Enemy {
 			
 		}
 		
-		void attackPlayer(Player player) {
+		public void attackPlayer(Player player) {
 			
 	        Random random = new Random();
 	        int damage = random.nextInt(16);

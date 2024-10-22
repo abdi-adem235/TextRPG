@@ -1,4 +1,4 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg;
 
 public class ToDo {
 	

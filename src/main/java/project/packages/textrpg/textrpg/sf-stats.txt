@@ -1,5 +1,0 @@
-Stats for sf: 
-Name: sf
-Level: 1
-Exp: 0
-Enemies defeated: 0

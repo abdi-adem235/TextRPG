@@ -1,6 +1,0 @@
-Stats for sdfsfd: 
-Name: sdfsfd
-Job: Warrior
-Level: 1
-Exp: 0
-Enemies defeated: 0

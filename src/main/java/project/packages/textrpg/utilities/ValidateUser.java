@@ -1,4 +1,4 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.utilities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ public class ValidateUser {
 	    private Map<String, String> userMap = new HashMap<>();
 
 	    public void loadUsers() {
-	        try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/project/packages/textrpg/textrpg/userpassword.txt"))) {
+	        try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/project/packages/textrpg/userpassword.txt"))) {
 	            String line;
 	            while ((line = br.readLine()) != null) {
 	                String[] parts = line.split("\\s+",2);

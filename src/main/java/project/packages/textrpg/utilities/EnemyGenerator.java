@@ -1,10 +1,14 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.utilities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import project.packages.textrpg.characters.Enemy;
+import project.packages.textrpg.characters.Player;
+import project.packages.textrpg.ingame.RpgMap;
 
 //import com.bptn.course.PersonalProject.Enemy;
 
@@ -43,7 +47,7 @@ public class EnemyGenerator {
       		generatedEnemy = entry.getValue();
       		//player.encounter(player, map);
       		//player.attack(enemy,player);
-      		System.out.println("A " +generatedEnemy.name+ " has appeared!!!");
+      		System.out.println("A " +generatedEnemy.getName()+ " has appeared!!!");
       		break;
       		
       	}

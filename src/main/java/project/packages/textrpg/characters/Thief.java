@@ -1,14 +1,17 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.characters;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import project.packages.textrpg.ingame.RpgMap;
+import project.packages.textrpg.utilities.EnemyGenerator;
+
 public class Thief extends Player {
 	
 	String weapon = "dagger";
 	
-	Thief(String name, int x, int y){
+	public Thief(String name, int x, int y){
 		super(100,name,0,1,25,x,y,0);
 		this.weapon = weapon;
 		this.attack = 25;
@@ -76,7 +79,7 @@ public class Thief extends Player {
 
   
 	
-		if(encounterType <= 25) {
+		else if(encounterType <= 25) {
 			System.out.println("You have found a treasure chest and have been granted some exp!");
 			player.gainExp(20);
 		}
@@ -84,6 +87,11 @@ public class Thief extends Player {
 		else if(encounterType == 15) {
 			System.out.println("You have found a healing well and have replenished some hp!");
 			player.gainHP(40);
+		}
+		
+		else if(encounterType <= 10) {
+			System.out.println("A mysterious glow has enveloped the area. You feel a sudden boost in energy!");
+			player.setHp(130);
 		}
 		
 		

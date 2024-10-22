@@ -1,6 +1,9 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.ingame;
 
 import java.util.Map;
+
+import project.packages.textrpg.characters.Player;
+
 import java.util.HashMap;
 import java.util.List;
 

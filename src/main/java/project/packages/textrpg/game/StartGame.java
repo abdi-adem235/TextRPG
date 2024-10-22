@@ -1,6 +1,8 @@
-package project.packages.textrpg.textrpg;
+package project.packages.textrpg.game;
 
 import java.util.Scanner;
+
+import project.packages.textrpg.utilities.ValidateUser;
 
 public class StartGame {
     private ValidateUser validateUser;
