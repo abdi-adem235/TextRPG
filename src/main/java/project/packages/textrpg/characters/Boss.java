@@ -1,9 +1,6 @@
-package project.packages.textrpg;
+package project.packages.textrpg.characters;
 
 import java.util.Random;
-
-import project.packages.textrpg.characters.Enemy;
-import project.packages.textrpg.characters.Player;
 
 public class Boss extends Enemy {
 	

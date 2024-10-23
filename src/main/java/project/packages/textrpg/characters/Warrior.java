@@ -20,7 +20,7 @@ public class Warrior extends Player{
 	String type = "warrior";
 	
 	public Warrior(String name, int x, int y) {
-	super(100,name,0,1,25,x,y,0);
+	super();
 	this.weapon = weapon;
 	this.attack = 25;
 	this.type = "warrior";

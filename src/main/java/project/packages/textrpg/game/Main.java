@@ -2,7 +2,7 @@ package project.packages.textrpg.game;
 
 import java.util.Scanner;
 
-import project.packages.textrpg.Boss;
+import project.packages.textrpg.characters.Boss;
 import project.packages.textrpg.characters.Mage;
 import project.packages.textrpg.characters.Player;
 import project.packages.textrpg.characters.Thief;
@@ -54,23 +54,25 @@ public class Main {
 					
 					case 1:
 						System.out.println("You have chosen Warrior, please make a name for your character");
-						String nameChoice = sc.nextLine();
-						player = new Warrior(nameChoice,0,0);
+						String warriorChoice = sc.nextLine();
+						player = new Warrior(warriorChoice,0,0);
+						System.out.println("Welcome, Warrior" +warriorChoice+ "!");
 						correctInput = true;
 						break;
 						
 					case 2:
 						System.out.println("You have chosen Mage, please make a name for your character");
-						String nameChoice2 = sc.nextLine();
-						player = new Mage(nameChoice2,0,0);
+						String mageChoice = sc.nextLine();
+						player = new Mage(mageChoice,0,0);
+						System.out.println("Welcome, Mage" +mageChoice+ "!");
 						correctInput = true;
 						break;
 						
 					case 3:
 						System.out.println("You have chosen Thief, please make a name for your character");
-						String nameChoice3 = sc.nextLine();
-						player = new Thief(nameChoice3,0,0);
-						System.out.println("Welcome, Thief" +nameChoice3+ "!");
+						String thiefChoice = sc.nextLine();
+						player = new Thief(thiefChoice,0,0);
+						System.out.println("Welcome, Thief" +thiefChoice+ "!");
 						correctInput = true;
 						break;
 					

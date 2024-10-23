@@ -12,7 +12,7 @@ public class Mage extends Player {
 	static String weapon = "staff";
 	
 	public Mage(String name, int x, int y){
-		super(100,name,0,1,25,x,y,0);
+		super();
 		this.weapon = weapon;
 		this.attack = 25;
 	}

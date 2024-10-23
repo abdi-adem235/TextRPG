@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import project.packages.textrpg.Boss;
 import project.packages.textrpg.ingame.Quest;
 import project.packages.textrpg.ingame.RpgMap;
 
@@ -23,7 +22,7 @@ public abstract class Player {
 		int hp = 100;
 		String name;
 		int exp;
-		int level;
+		int level = 1;
 		int attack;
 		int x; //for coordinates
 		int y; // for coordinates
@@ -43,7 +42,7 @@ public abstract class Player {
 		
 	}
 		
-	public Player(int hp,String name, int exp, int level,int attack, int x, int y, int enemiesDefeated) {
+	public Player(String name,int x, int y) {
 		this.hp = hp;
 		this.name = name;
 		this.exp = exp;
@@ -150,7 +149,7 @@ public abstract class Player {
 		
 	}
 	
-public void movePlayer(char direction) {
+	public void movePlayer(char direction) {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean validMove = false;
@@ -261,7 +260,7 @@ public void movePlayer(char direction) {
 	public void showStats() {
 		try 
 			{
-				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg" +this.name+ "-stats.txt");
+				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg/" +this.name+ "-stats.txt");
 				
 				//write into file
 				

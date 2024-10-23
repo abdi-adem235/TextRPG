@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-import project.packages.textrpg.Boss;
+import project.packages.textrpg.characters.Boss;
 import project.packages.textrpg.characters.Player;
 
 import java.util.List;
