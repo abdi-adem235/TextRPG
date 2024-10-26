@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import project.packages.textrpg.utilities.ConsoleColors;
+
 
 
 public class Enemy {
@@ -17,6 +19,7 @@ public class Enemy {
 		public Enemy(Integer health, String name, int damage) {
 			this.health = health;
 			this.name = name;
+			this.damage = damage;
 		}
 		
 		
@@ -33,10 +36,20 @@ public class Enemy {
 	        Random random = new Random();
 	        int damage = random.nextInt(16);
 			player.hp -= damage;
-			System.out.println("Player " +player.name+ " has taken " +damage+ " damage and has " +player.hp+ " health remaining");
+			System.out.println(ConsoleColors.RED + "Enemy " +this.getName()+ " has inflicted " +damage+ " damage and " +player.getName()+ " has " +player.getHp()+ " health remaining" + ConsoleColors.RESET);
 			
 		}
 		
+		public int getDamage() {
+			return this.damage;
+		}
+
+
+		public void setDamage(int damage) {
+			this.damage = damage;
+		}
+
+
 		void takeDamage(int damage) {
 			this.health -= damage;
 			

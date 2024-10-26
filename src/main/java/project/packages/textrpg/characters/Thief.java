@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Random;
 
 import project.packages.textrpg.ingame.RpgMap;
+import project.packages.textrpg.utilities.ConsoleColors;
 import project.packages.textrpg.utilities.EnemyGenerator;
 
 public class Thief extends Player {
@@ -19,21 +20,20 @@ public class Thief extends Player {
 	
 	@Override
 	public void attack(Enemy enemy, Player player) {
-		System.out.println(this.name+ " attacks with their " +this.weapon+ "!!!");
+		this.getJob();
+		System.out.println(ConsoleColors.MAGENTA + this.name+ " attacks with their " +this.weapon+ "!!!" + ConsoleColors.RESET);
 		enemy.takeDamage(this.attack);
-		if(enemy.getHealth() != 0) {
+		if(enemy.getHealth() > 0) {
 			System.out.println(enemy.getName() + " has " +(enemy.getHealth())+ " health remaining");
 		}
 		
-		else if(enemy.getHealth() == 0) {
+		else{
 			System.out.println("You have defeated the " +enemy.getName());
 			enemiesDefeated++;
 			player.gainExp(20);
 		}
 			
-		else if(this.hp <= 0) {
-			System.out.println("You have died.");
-		}
+		
 			
 	}
 	
@@ -53,25 +53,35 @@ public class Thief extends Player {
 			Enemy enemy = enemygenerator.generateEnemy(player, map, enemygenerator);
 				
 				
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				while (enemy.getHealth() > 0 && player.getHp() > 0) {
-					player.attack(enemy,player);
+			while (enemy.getHealth() > 0 && player.getHp() > 0) {
+				
+				player.attack(enemy,player);
+				
+				if(enemy.getHealth() > 0) {
+					
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					
 					enemy.attackPlayer(player);
+				
 				}
-			
-			
-			
-			
+				
+				
+				if (player.getHp() <= 0) {
+			        System.out.println("You have died.");
+			        break; // Exit the loop if player health is zero
+			    }
+				
 			}
+			
+			
+			
+			
+			
+		}
 			
 		
 			
@@ -96,30 +106,12 @@ public class Thief extends Player {
 		
 		
         
-        System.out.println("Player (Level" +this.level+ ") has " +player.hp+ " health remaining");
-        System.out.println("Player " +player.name+ " has " +player.exp+ " exp");
-//		encounterMap.put(0.45, "An" +enemy.name+ " has appeared!");
-//		encounterMap.put(0.25, "You have found a healing well and have replenished some hp!");
-//		encounterMap.put(0.30, "You have found a treasure chest and have been granted some exp!");
-//		
-//		 // Using entrySet() to get keys and values
-//        Set<Map.Entry<Double, String>> entries = encounterMap.entrySet();
-//        for (Map.Entry<Double, String> entry : entries) {
-//        	if(entry.getKey() == 0.45) {
-//        		enemy = new Enemy(100,"Dragon");
-//        		System.out.println(entry.getValue());
-//        		player.attack(enemy);
-//        		
-//        	}
-//        	
-//        	else if(entry.getKey() == 0.25) {
-//        		System.out.println(entry.getValue());
-//        	}
-//        	
-//        	else if(entry.getKey() == 0.30) {
-//        		System.out.println(entry.getValue());
-//        	}
-        }
+		  System.out.print("Player " +this.getName()+ " (Level" +this.getLevel()+ ") has " +player.getHp()+ "/100 health");
+	      System.out.println(" and "+player.getExp()+ "/100 exp");
+	       
+        
+	
+	}
 	
   public int getThiefHealth() {
         return super.getHp(); // Accessing health using super
@@ -133,17 +125,23 @@ public class Thief extends Player {
 		this.weapon = weapon;
 	}
 	
+	public void updateAttack(int attack) {
+		this.attack = attack;
+	}
+	
 	@Override
 	public String getJob(){
-		if(this.level >= 0 && this.level <3) {
+		if(this.getLevel() >= 1 && this.getLevel() <2) {
 			return "Thief"; 
 		}
-		else if(this.level >=3 && this.level < 6) {
+		else if(this.getLevel() >=2 && this.getLevel() < 4) {
 			updateWeapon("Twin Daggers");
+			updateAttack(35);
 			return "Night Master";
 		}
-		else if(this.level >=6) {
+		else if(this.getLevel() >=4) {
 			updateWeapon("Shadow Curved Blade");
+			updateAttack(45);
 			return "Night Lord";
 		}
 		return "Unknown";

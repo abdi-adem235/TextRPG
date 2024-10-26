@@ -1,0 +1,7 @@
+Stats for ee: 
+Name: ee
+Job: Current job is: Mage
+Level: 2
+Health: 57
+Exp: 20
+Enemies defeated: 6

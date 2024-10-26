@@ -2,6 +2,8 @@ package project.packages.textrpg.characters;
 
 import java.util.Random;
 
+import project.packages.textrpg.utilities.ConsoleColors;
+
 public class Boss extends Enemy {
 	
 	Random random = new Random();
@@ -16,9 +18,9 @@ public class Boss extends Enemy {
 	
 	@Override
 	public void attackPlayer(Player player) {
-		int damage = random.nextInt(26);
+		int damage = random.nextInt(30);
 		player.setHp(player.getHp() - damage);
-		System.out.println("Player " +player.getName()+ " has taken " +this.damage+ " and has " +player.getHp()+ " remaining");
+		System.out.println(ConsoleColors.CYAN + "Player " +player.getName()+ " has taken " +damage+ " and has " +player.getHp()+ " remaining" + ConsoleColors.RESET);
 	}
 	
 	public int getHp(){

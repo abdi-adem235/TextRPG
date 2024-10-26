@@ -1,0 +1,7 @@
+Stats for ss: 
+Name: ss
+Job: Current job is: Mage
+Level: 1
+Health: 100
+Exp: 0
+Enemies defeated: 0

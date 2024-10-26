@@ -12,7 +12,7 @@ public class ValidateUser {
 	String password;
 	
 	
-	    private Map<String, String> userMap = new HashMap<>();
+	    private static Map<String, String> userMap = new HashMap<>();
 
 	    public void loadUsers() {
 	        try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/project/packages/textrpg/userpassword.txt"))) {
@@ -31,6 +31,11 @@ public class ValidateUser {
 	    public boolean validateUser(String username, String password) {
 	        return userMap.containsKey(username) && userMap.get(username).equals(password);
 	    }
+	    
+	    public static Map <String, String> getUserMap() {
+	    	return userMap;
+	    }
+	    
 
 	
 	

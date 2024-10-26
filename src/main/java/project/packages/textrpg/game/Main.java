@@ -1,5 +1,6 @@
 package project.packages.textrpg.game;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import project.packages.textrpg.characters.Boss;
@@ -10,6 +11,7 @@ import project.packages.textrpg.characters.Warrior;
 import project.packages.textrpg.ingame.Dialogue;
 import project.packages.textrpg.ingame.Quest;
 import project.packages.textrpg.ingame.RpgMap;
+import project.packages.textrpg.utilities.ValidateUser;
 
 
 
@@ -39,11 +41,13 @@ public class Main {
 		boolean gameLoop = true;
 	
 		while(gameLoop) {
+			
 			boolean correctInput = false;
 			
+			//flag for checking valid input
 			while(!correctInput) {
 				
-			
+				//try except block for choosing player class
 				try {
 					System.out.println("Welcome new player! Please choose your class and embark on a new journey!");
 					System.out.println("Please enter 1 for Warrior, 2 for Mage, or 3 for Thief.");

@@ -1,5 +1,6 @@
 package project.packages.textrpg.game;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import project.packages.textrpg.utilities.ValidateUser;
@@ -27,6 +28,10 @@ public class StartGame {
             System.out.println("Invalid username or password. Please try again.");
             login(); // Retry login
         }
+    }
+    
+    public Map<String, String> getUserMap() {
+        return ValidateUser.getUserMap(); // Return the userMap
     }
 
     public static void main(String[] args) {

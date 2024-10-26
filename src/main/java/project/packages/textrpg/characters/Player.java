@@ -231,7 +231,7 @@ public abstract class Player {
 	public void encounterBoss(Player player) {
 		if (player.getX() == 4 && player.getY() == 3) {
 			Boss boss = new Boss();
-			while(this.getHp() > 0 && boss.getHp() > 0) {
+			while(player.getHp() > 0 && boss.getHp() > 0) {
 				player.attack(boss,player);
 				try {
 					Thread.sleep(1000);
@@ -241,13 +241,21 @@ public abstract class Player {
 				boss.attackPlayer(player);
 			}
 			
-			System.out.println("Congratulations! You have defeated the " + boss.getName() + "!");
-            player.incrementEnemiesDefeated();
-            player.gainExp(50);
-            Quest.questThree(player,boss);
+			if(player.getHp() > 0) {
+				
+				System.out.println("Congratulations! You have defeated the " + boss.getName() + "!");
+	            player.incrementEnemiesDefeated();
+	            player.gainExp(50);
+	            Quest.questThree(player,boss);
 				
 			}
+			
+			else {
+				System.out.println("...");
+			}
+				
 		}
+	}
 	
 	public void showStats() {
 		try 
@@ -313,7 +321,7 @@ public abstract class Player {
 		
 		if(this.exp >= 100) {
 			this.level += 1;
-			System.out.println(this.name+ " has leveled up and is now level" +this.level + "!!! ");
+			System.out.println(this.name+ " has leveled up and is now Level " +this.level + "!!! ");
 			this.exp = this.exp - 100;
 			this.hp = 100;
 		}
