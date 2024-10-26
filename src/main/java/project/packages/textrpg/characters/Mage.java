@@ -9,10 +9,10 @@ import project.packages.textrpg.utilities.EnemyGenerator;
 
 public class Mage extends Player {
 	
-	static String weapon = "staff";
+	private  String weapon = "staff";
 	
 	public Mage(String name, int x, int y){
-		super();
+		super(100, name, 1, 25, x, y, 0);
 		this.weapon = weapon;
 		this.attack = 25;
 	}
@@ -26,10 +26,10 @@ public class Mage extends Player {
 	
 	@Override
 	public void attack(Enemy enemy, Player player) {
-		System.out.println(this.name+ " attacks with their " +Mage.weapon+ "!!!");
+		System.out.println(this.name+ " attacks with their " +this.getWeapon()+ "!!!");
 		enemy.takeDamage(this.attack);
-		if(enemy.health != 0) {
-			System.out.println(enemy.name + " has " +(enemy.health)+ " health remaining");
+		if(enemy.getHealth() != 0) {
+			System.out.println(enemy.getName() + " has " +(enemy.getHealth())+ " health remaining");
 		}
 		
 		else if(enemy.getHealth() == 0) {
@@ -103,7 +103,7 @@ public class Mage extends Player {
 		
         
         System.out.println("Player (Level" +this.level+ ") has " +player.hp+ " health remaining");
-        System.out.println("Player " +player.name+ " has " +player.exp+ "exp");
+        System.out.println("Player " +player.getName()+ " has " +player.exp+ "exp");
 //		encounterMap.put(0.45, "An" +enemy.name+ " has appeared!");
 //		encounterMap.put(0.25, "You have found a healing well and have replenished some hp!");
 //		encounterMap.put(0.30, "You have found a treasure chest and have been granted some exp!");
@@ -129,12 +129,12 @@ public class Mage extends Player {
 	
 	
 
-	public static String getWeapon() {
+	public  String getWeapon() {
 		return weapon;
 	}
 
-	public static void setWeapon(String weapon) {
-		Mage.weapon = weapon;
+	public void setWeapon(String weapon) {
+		this.weapon = weapon;
 	}
 	
 	@Override

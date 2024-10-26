@@ -56,7 +56,7 @@ public class Main {
 						System.out.println("You have chosen Warrior, please make a name for your character");
 						String warriorChoice = sc.nextLine();
 						player = new Warrior(warriorChoice,0,0);
-						System.out.println("Welcome, Warrior" +warriorChoice+ "!");
+						System.out.println("Welcome, Warrior " +warriorChoice+ "!");
 						correctInput = true;
 						break;
 						
@@ -64,7 +64,7 @@ public class Main {
 						System.out.println("You have chosen Mage, please make a name for your character");
 						String mageChoice = sc.nextLine();
 						player = new Mage(mageChoice,0,0);
-						System.out.println("Welcome, Mage" +mageChoice+ "!");
+						System.out.println("Welcome, Mage " +mageChoice+ "!");
 						correctInput = true;
 						break;
 						
@@ -72,7 +72,7 @@ public class Main {
 						System.out.println("You have chosen Thief, please make a name for your character");
 						String thiefChoice = sc.nextLine();
 						player = new Thief(thiefChoice,0,0);
-						System.out.println("Welcome, Thief" +thiefChoice+ "!");
+						System.out.println("Welcome, Thief " +thiefChoice+ "!");
 						correctInput = true;
 						break;
 					
@@ -92,7 +92,7 @@ public class Main {
 				
 				menu.DisplayMenu(player,map,dialogue);
 				player.encounterBoss(player);
-				Quest.questOne(player);
+				player.getCoordinates(player.getX(), player.getY());
 				Quest.questTwo(player);
 				Quest.questThree(player,boss);
 				

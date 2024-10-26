@@ -12,7 +12,7 @@ public class Thief extends Player {
 	String weapon = "dagger";
 	
 	public Thief(String name, int x, int y){
-		super();
+		super(100, name, 1, 25, x, y, 0);
 		this.weapon = weapon;
 		this.attack = 25;
 	}
@@ -21,12 +21,12 @@ public class Thief extends Player {
 	public void attack(Enemy enemy, Player player) {
 		System.out.println(this.name+ " attacks with their " +this.weapon+ "!!!");
 		enemy.takeDamage(this.attack);
-		if(enemy.health != 0) {
-			System.out.println(enemy.name + " has " +(enemy.health)+ " health remaining");
+		if(enemy.getHealth() != 0) {
+			System.out.println(enemy.getName() + " has " +(enemy.getHealth())+ " health remaining");
 		}
 		
 		else if(enemy.getHealth() == 0) {
-			System.out.println("You have defeated the" +enemy.getName());
+			System.out.println("You have defeated the " +enemy.getName());
 			enemiesDefeated++;
 			player.gainExp(20);
 		}

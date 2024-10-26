@@ -16,11 +16,11 @@ import java.util.Set;
 public class Warrior extends Player{
 	
 	
-	String weapon = "sword";
-	String type = "warrior";
+	private String weapon = "sword";
+	private String type = "warrior";
 	
 	public Warrior(String name, int x, int y) {
-	super();
+	super(100, name, 1, 25, x, y, 0);
 	this.weapon = weapon;
 	this.attack = 25;
 	this.type = "warrior";
@@ -30,8 +30,8 @@ public class Warrior extends Player{
 	public void attack(Enemy enemy, Player player) {
 		System.out.println(this.name+ " attacks with their " +this.getWeapon()+ "!!!");
 		enemy.takeDamage(this.attack);
-		if(enemy.health != 0) {
-			System.out.println(enemy.name + " has " +(enemy.health)+ " health remaining");
+		if(enemy.getHealth() != 0) {
+			System.out.println(enemy.getName() + " has " +(enemy.getHealth())+ " health remaining");
 		}
 		
 		else if(enemy.getHealth() == 0) {
@@ -115,7 +115,7 @@ public class Warrior extends Player{
 		
 		
         
-        System.out.print("Player " +player.name+ " (Level" +this.level+ ") has " +player.hp+ "/100 health");
+        System.out.print("Player " +this.getName()+ " (Level" +this.level+ ") has " +player.hp+ "/100 health");
         System.out.println(" and "+player.exp+ "/100 exp");
         
 	}

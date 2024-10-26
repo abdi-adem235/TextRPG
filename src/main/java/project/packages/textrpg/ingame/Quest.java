@@ -17,9 +17,9 @@ public class Quest {
 //	
 	
 	
-	String questName;
-	String questDescription;
-	boolean questCompleted;
+	private String questName;
+	private String questDescription;
+	private boolean questCompleted;
 
 	Quest(String questName, String questDescription, Boolean questCompleted){
 		this.questName = questName;
@@ -30,9 +30,9 @@ public class Quest {
 	
 	public static void initializeQuests() {
 		
-		questList.add(new Quest("Find the Stolen Emerald!!!","sfsf",false));
-		questList.add(new Quest("Defeat 3 enemies","sfsf",false));
-		questList.add(new Quest("Defeat the Boss","sfsf",false));
+		questList.add(new Quest("Find the Lost Emerald!!!","The emerald from the king's crown was lost during a voyage. Find the emerald and bring glory back to the kingdom",false));
+		questList.add(new Quest("Defeat 3 enemies","Find and defeat 3 enemies",false));
+		questList.add(new Quest("Defeat the Time Lord","The Time Lord is residing at the edge of the world. Find and defeat him to restore peace to the kingdom! ",false));
 		
 		
 	}
@@ -60,7 +60,7 @@ public class Quest {
 	}
 	
 	public static void questThree(Player player,Boss boss) {
-		if(boss.getHealth() <= 0) {
+		if(boss.getHealth() <= 0 && player.getHp() > 0) {
 			System.out.println("You have completed the quest!!");
 			updateQuest("Defeat the boss");
 		}
@@ -85,8 +85,11 @@ public class Quest {
 	                break;
 	        
 	            }
+	            else {
+	            	System.out.println("Quest '" + questName + "' not found.");
+	            }
 	        }
-	        System.out.println("Quest '" + questName + "' not found.");
+	        
 	    
 		}
 	}

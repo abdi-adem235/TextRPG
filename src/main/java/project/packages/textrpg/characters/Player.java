@@ -31,7 +31,7 @@ public abstract class Player {
 	
 		//for Quests
 		
-		private Map<Integer, String> map = new HashMap<>();
+		//private Map<Integer, String> map = new HashMap<>();
 	
 		// TODO Auto-generated method stub
 		//create a player class that mage, thief, warrior, derive from
@@ -42,7 +42,7 @@ public abstract class Player {
 		
 	}
 		
-	public Player(String name,int x, int y) {
+	public Player(int hp, String name, int level, int attack, int x, int y, int exp) {
 		this.hp = hp;
 		this.name = name;
 		this.exp = exp;
@@ -129,7 +129,7 @@ public abstract class Player {
 	}
 
 	public void setEnemiesDefeated() {
-		this.enemiesDefeated += 1;
+		this.enemiesDefeated = enemiesDefeated;
 	}
 		
 	public void incrementEnemiesDefeated() {
@@ -197,13 +197,6 @@ public abstract class Player {
 				default -> System.out.println("Not a correct direction");
 			}
 			
-//				if(this.x + 1 > final_X || this.y + 1 > final_Y) {
-//					System.out.println("Out of bounds, you can not venture on this path.");
-//				}
-//				else {
-//					this.x = x;
-//					this.y = y;
-//				}
 			
 			if(!validMove) {
 				
@@ -214,6 +207,12 @@ public abstract class Player {
 			
 			}
 			
+			//Call questOne method after moving player to match coordinates with quest requirement
+			Quest.questOne(this);
+			
+		
+		
+		
 		}
 		
 }
@@ -221,20 +220,13 @@ public abstract class Player {
 
 	public abstract void attack(Enemy enemy, Player player);
 	
-	//public abstract void defend(Enemy enemy, Player player);
-	
 	public abstract void encounter(Player player, RpgMap map);
 	
 	public void updateQuest(String questName) {
 	        Quest.updateQuest(questName);
 	    }
 	
-//	public void triggerBoss(Player player) {
-//		if(player.getX() == 4 && player.getY() == 3)
-//		System.out.println("You have encountered the boss!!!");
-//		Boss boss = new Boss();
-//		player.encounterBoss(boss,player);
-//	}
+	
 	//method to trigger boss
 	public void encounterBoss(Player player) {
 		if (player.getX() == 4 && player.getY() == 3) {
@@ -260,7 +252,7 @@ public abstract class Player {
 	public void showStats() {
 		try 
 			{
-				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg/" +this.name+ "-stats.txt");
+				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg" +this.name+ "-stats.txt");
 				
 				//write into file
 				
@@ -317,7 +309,7 @@ public abstract class Player {
 
 	public void gainExp(int expGain) {
 		this.exp+= expGain;
-		System.out.println(this.name+ "gained " +expGain+ " exp and now has " +this.exp+ " exp!");
+		System.out.println(this.getName()+ " gained " +expGain+ " exp and now has " +this.exp+ " exp!");
 		
 		if(this.exp >= 100) {
 			this.level += 1;
