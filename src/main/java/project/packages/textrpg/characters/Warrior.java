@@ -37,7 +37,7 @@ public class Warrior extends Player{
 		}
 		
 		else {
-			System.out.println("You have defeated the" +enemy.getName());
+			System.out.println("You have defeated the " +enemy.getName());
 			this.incrementEnemiesDefeated();
 			player.gainExp(20);
 		}

@@ -35,7 +35,7 @@ public class Mage extends Player {
 		}
 		
 		else  {
-			System.out.println("You have defeated the" +enemy.getName());
+			System.out.println("You have defeated the " +enemy.getName());
 			enemiesDefeated++;
 			player.gainExp(20);
 		}
