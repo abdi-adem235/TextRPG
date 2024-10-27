@@ -1,1 +1,1 @@
-Make this repo non-empty
+This repo is for my Text RPG
