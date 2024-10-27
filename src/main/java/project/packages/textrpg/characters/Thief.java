@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import project.packages.textrpg.ingame.Quest;
 import project.packages.textrpg.ingame.RpgMap;
 import project.packages.textrpg.utilities.ConsoleColors;
 import project.packages.textrpg.utilities.EnemyGenerator;
@@ -20,7 +21,7 @@ public class Thief extends Player {
 	
 	@Override
 	public void attack(Enemy enemy, Player player) {
-		this.getJob();
+		player.getJob();
 		System.out.println(ConsoleColors.MAGENTA + this.name+ " attacks with their " +this.weapon+ "!!!" + ConsoleColors.RESET);
 		enemy.takeDamage(this.attack);
 		if(enemy.getHealth() > 0) {
@@ -29,7 +30,7 @@ public class Thief extends Player {
 		
 		else{
 			System.out.println("You have defeated the " +enemy.getName());
-			enemiesDefeated++;
+			incrementEnemiesDefeated();
 			player.gainExp(20);
 		}
 			
@@ -47,8 +48,22 @@ public class Thief extends Player {
 		
 		EnemyGenerator enemygenerator = new EnemyGenerator();
 
-		  
-		if(encounterType < 50) {
+		if(encounterType < 10) {
+			System.out.println("You have found a treasure chest and have been granted some exp!");
+			player.gainExp(20);
+		}
+			
+		else if(encounterType > 10 && encounterType < 20) {
+			System.out.println("You have found a healing well and have replenished some hp!");
+			player.gainHP(40);
+		}
+		
+		else if(encounterType > 20 && encounterType < 30) {
+			System.out.println("A mysterious glow has enveloped the area. You feel a sudden boost in energy!");
+			player.setHp(130);
+		}
+		
+		else if(encounterType > 50) {
 			
 			Enemy enemy = enemygenerator.generateEnemy(player, map, enemygenerator);
 				
@@ -56,6 +71,7 @@ public class Thief extends Player {
 			while (enemy.getHealth() > 0 && player.getHp() > 0) {
 				
 				player.attack(enemy,player);
+				System.out.println("-------------");
 				
 				if(enemy.getHealth() > 0) {
 					
@@ -66,43 +82,26 @@ public class Thief extends Player {
 					}
 					
 					enemy.attackPlayer(player);
+					System.out.println("-------------");
+					
 				
 				}
 				
 				
 				if (player.getHp() <= 0) {
-			        System.out.println("You have died.");
+			        System.out.println("...");
 			        break; // Exit the loop if player health is zero
 			    }
 				
 			}
 			
-			
+			Quest.questTwo(player);
 			
 			
 			
 		}
 			
 		
-			
-		
-
-  
-	
-		else if(encounterType <= 25) {
-			System.out.println("You have found a treasure chest and have been granted some exp!");
-			player.gainExp(20);
-		}
-			
-		else if(encounterType == 15) {
-			System.out.println("You have found a healing well and have replenished some hp!");
-			player.gainHP(40);
-		}
-		
-		else if(encounterType <= 10) {
-			System.out.println("A mysterious glow has enveloped the area. You feel a sudden boost in energy!");
-			player.setHp(130);
-		}
 		
 		
         

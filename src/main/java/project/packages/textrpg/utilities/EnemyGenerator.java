@@ -26,7 +26,7 @@ public class EnemyGenerator {
 		
 	}
 	
-	
+	// enemy method to generate enemy based off player location
 	public Enemy generateEnemy(Player player, RpgMap map, EnemyGenerator enemygenerator){
 		
 		
@@ -38,8 +38,6 @@ public class EnemyGenerator {
 	      for (Map.Entry<String, Enemy> entry : entries) {
 	      	if(entry.getKey().equals(map.getRegion(player.getX(),player.getY()))) {
 	      		generatedEnemy = entry.getValue();
-	      		//player.encounter(player, map);
-	      		//player.attack(enemy,player);
 	      		System.out.println("A " +generatedEnemy.getName()+ " has appeared!!!");
 	      		break;
 	      		
@@ -48,9 +46,11 @@ public class EnemyGenerator {
       
 	
       }
-	return generatedEnemy;
+	      
+	      return generatedEnemy;
       
 	}
+	
 	public Map<String,Enemy> getEnemies() {
         return enemyMap;
     }

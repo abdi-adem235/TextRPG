@@ -13,7 +13,8 @@ public class ValidateUser {
 	
 	
 	    private static Map<String, String> userMap = new HashMap<>();
-
+	    
+	    //load users method using buffered reader
 	    public void loadUsers() {
 	        try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/project/packages/textrpg/userpassword.txt"))) {
 	            String line;

@@ -13,14 +13,14 @@ public class Boss extends Enemy {
 	int exp = 30;
 	
 	public Boss() {
-		super(150, "Time Lord",30);
+		super(200, "Time Lord",30);
 	}
 	
 	@Override
 	public void attackPlayer(Player player) {
 		int damage = random.nextInt(30);
 		player.setHp(player.getHp() - damage);
-		System.out.println(ConsoleColors.CYAN + "Player " +player.getName()+ " has taken " +damage+ " and has " +player.getHp()+ " remaining" + ConsoleColors.RESET);
+		System.out.println(ConsoleColors.CYAN + " " +this.getName()+ " has inflicted " +damage+ " damage and " +player.getName()+ " has " +player.getHp()+ " health remaining" + ConsoleColors.RESET);
 	}
 	
 	public int getHp(){

@@ -47,14 +47,12 @@ public class Quest {
 	
 	public static void questOne(Player player) {
 		if(player.getX() == 2 && player.getY() == 2) {
-			System.out.println("You have completed the quest!!");
-			updateQuest("Find the Stolen Emerald!!!");
+			updateQuest("Find the Lost Emerald!!!");
 		}
 	}
 	
 	public static void questTwo(Player player) {
-		if(player.getEnemiesDefeated() > 3) {
-			System.out.println("You have completed the quest!!");
+		if(player.getEnemiesDefeated() == 3) {
 			updateQuest("Defeat 3 enemies");
 		}
 	}
@@ -62,7 +60,7 @@ public class Quest {
 	public static void questThree(Player player,Boss boss) {
 		if(boss.getHealth() <= 0 && player.getHp() > 0) {
 			System.out.println("You have completed the quest!!");
-			updateQuest("Defeat the boss");
+			updateQuest("Defeat the Time Lord");
 		}
 	}
 	
@@ -80,14 +78,19 @@ public class Quest {
 		{
 	        for (Quest quest : questList) {
 	            if (quest.getName().equalsIgnoreCase(questName)) {
-	                quest.questCompleted();
-	                System.out.println("Quest '" + questName + "' has been completed.");
-	                break;
+	            	if(quest.questCompleted == false) {
+	            		quest.questCompleted();
+	 	                System.out.println("Quest '" + questName + "' has been completed.");
+	 	                break;
+	            	}
+	            	else {
+	            		System.out.println("Quest already completed");
+	            		break;
+	            	}
+	               
 	        
 	            }
-	            else {
-	            	System.out.println("Quest '" + questName + "' not found.");
-	            }
+
 	        }
 	        
 	    

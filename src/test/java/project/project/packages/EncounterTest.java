@@ -34,7 +34,7 @@ public class EncounterTest {
 	@Test
 	public void ThiefEncounter() {
 		//Random random = new Random();
-		Thief thief = new Thief("dgdf", 0, 0);
+		Thief thief = new Thief("TestThief", 0, 0);
 		EnemyGenerator enemyGenerator = new EnemyGenerator();
 		int health = thief.getThiefHealth();
 		int exp = thief.getExp();

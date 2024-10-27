@@ -23,19 +23,20 @@ public class LoadMenu {
 	
 	public void DisplayMenu(Player player, RpgMap map, Dialogue dialogue) {
 		boolean loop = false;
+		int totalWidth = 70;
+		int padding = (totalWidth - ("Menu").length()) / 2; 
 		while(!loop) {
 			
-//			if(player.getHp() <= 0) {
-//				System.out.println("You have died......\n");
-//				System.out.println("You have died......\n");
-//				break;
-//			}
-//			
-//			else {
+
 			
 					try {
 						System.out.println("Please select from the following options\n");
-						System.out.println("1: Check Quests   2: Choose Direction  3: Heal  4:Show/Save Stats\n");
+						 // Print top border
+						System.out.println("-".repeat(totalWidth));
+						System.out.println(" ".repeat(padding) + "Menu");
+						System.out.println("-".repeat(totalWidth));
+						System.out.printf("| %-9s | %-10s | %-5s | %-10s %n", "1: Check Quests",  "2: Choose Direction",  "3: Heal",  "4:Show/Save Stats\n");
+						System.out.println("-".repeat(totalWidth));
 						
 						int choice = scanner.nextInt();
 						scanner.nextLine();
@@ -85,7 +86,7 @@ public class LoadMenu {
 					}
 					
 					if(player.getHp() <= 0) {
-						System.out.println("you have died.....");
+						System.out.println("You have died.....");
 						loop = true;
 					}
 					 

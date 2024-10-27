@@ -1,0 +1,7 @@
+Stats for wwdf: 
+Name: wwdf
+Job: Thief
+Level: 1
+Health: 13
+Exp: 80
+Enemies defeated: 4

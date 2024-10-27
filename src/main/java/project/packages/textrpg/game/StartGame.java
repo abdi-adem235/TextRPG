@@ -34,8 +34,5 @@ public class StartGame {
         return ValidateUser.getUserMap(); // Return the userMap
     }
 
-//    public static void main(String[] args) {
-//        StartGame game = new StartGame();
-//        game.login();
-//    }
+
 }

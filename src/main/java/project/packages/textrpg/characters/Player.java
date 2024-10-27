@@ -65,7 +65,7 @@ public abstract class Player {
 			
 		}
 		else if (this.hp + gain > 100){
-			this.hp = this.hp +((this.hp+gain)-100);
+			setHp(100);
 			System.out.println("You now have the maxiumum amount of hp");
 		}
 		else {
@@ -141,7 +141,7 @@ public abstract class Player {
 	public void usePotion(int potion) {
 		if(this.hp <= 50) {
 			this.hp += potion;
-			System.out.println("You have healed 50 hp");
+			System.out.println("You have healed 50 hp and now have " +this.getHp()+ " hp");
 		}
 		else {
 			System.out.println("Too much hp. You can not use the potion at this time");
@@ -233,20 +233,35 @@ public abstract class Player {
 			Boss boss = new Boss();
 			while(player.getHp() > 0 && boss.getHp() > 0) {
 				player.attack(boss,player);
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				System.out.println("-------------");
+				
+				if(boss.getHealth() > 0) {
+					
+					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					boss.attackPlayer(player);
+					System.out.println("-------------");
+					
+					
 				}
-				boss.attackPlayer(player);
+				
 			}
 			
 			if(player.getHp() > 0) {
 				
 				System.out.println("Congratulations! You have defeated the " + boss.getName() + "!");
 	            player.incrementEnemiesDefeated();
+	            Quest.questTwo(player);
 	            player.gainExp(50);
 	            Quest.questThree(player,boss);
+	            
+	            System.out.print("Player " +this.getName()+ " (Level" +this.getLevel()+ ") has " +player.getHp()+ "/100 health");
+	  	      	System.out.println(" and "+player.getExp()+ "/100 exp");
+	  	       
 				
 			}
 			
@@ -260,7 +275,7 @@ public abstract class Player {
 	public void showStats() {
 		try 
 			{
-				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg" +this.name+ "-stats.txt");
+				FileWriter fWriter = new FileWriter("src/main/java/project/packages/textrpg/" +this.name+ "-stats.txt");
 				
 				//write into file
 				

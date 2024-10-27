@@ -11,11 +11,7 @@ public class Dialogue extends RpgMap {
 	
 	private static Map<List <Integer>, String> dialogueMap = new HashMap<>();
 	
-//	public Dialogue() {
-//		super();
-//		dialogueMap = new HashMap<>();
-//		initializeDialogue();
-//	}
+
 	
 	public Dialogue() {
 		dialogueMap.put(List.of(0,1), "A lush, beautiful forest. Who knows what may be lurking...");
@@ -28,7 +24,7 @@ public class Dialogue extends RpgMap {
 		dialogueMap.put(List.of(1,3), "You stumble into a deep and dark cave ....");
 		dialogueMap.put(List.of(2,3), "You stumble into a deep and dark cave ....");
 		dialogueMap.put(List.of(3,3), "A mysterious prescence can be felt...");
-	//}
+	
 	}
 	
 	public String getDialogue(Player player) {
