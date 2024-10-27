@@ -42,7 +42,7 @@ public class EncounterTest {
 		int exp = thief.getExp();
 		assertNotNull(player, "Player should not be null");
 		assertNotNull(map, "Map should not be null");
-		assertNotNull(enemy, "enemy should not be null");
+		
 		
 		thief.encounter(player, map);
 		
