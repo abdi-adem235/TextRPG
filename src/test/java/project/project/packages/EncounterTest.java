@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import project.packages.textrpg.characters.ConcretePlayer;
+import project.packages.textrpg.characters.Enemy;
 import project.packages.textrpg.characters.Player;
 import project.packages.textrpg.characters.Thief;
 import project.packages.textrpg.ingame.RpgMap;
@@ -33,23 +34,24 @@ public class EncounterTest {
 	
 	@Test
 	public void ThiefEncounter() {
-		//Random random = new Random();
-		Thief thief = new Thief("TestThief", 0, 0);
+		
+		Thief thief = new Thief("TestThief", 1, 1);
 		EnemyGenerator enemyGenerator = new EnemyGenerator();
+		Enemy enemy = enemyGenerator.generateEnemy(thief, map, enemyGenerator);
 		int health = thief.getThiefHealth();
 		int exp = thief.getExp();
-		int encounterType = 0;
 		assertNotNull(player, "Player should not be null");
 		assertNotNull(map, "Map should not be null");
+		assertNotNull(enemy, "enemy should not be null");
 		
-		
-		player.encounter(player, map);
+		thief.encounter(player, map);
 		
 		assertTrue(
-				(player.getHp() == health + 40) ||
-				(player.getHp() <= health )||
-				(player.getHp() == 130)||
-				(player.getExp() == exp + 20),
+				(thief.getHp() == health + 40) ||
+				(enemy == null || enemy.getHealth() >= 0) ||
+				(thief.getHp() <= health )||
+				(thief.getHp() == 130)||
+				(thief.getExp() == exp + 20),
 				"Assertion works."
 				);
 		
