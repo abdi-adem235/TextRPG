@@ -1,7 +1,0 @@
-Stats for ee: 
-Name: ee
-Job: Warrior
-Level: 1
-Health: 61
-Exp: 60
-Enemies defeated: 3

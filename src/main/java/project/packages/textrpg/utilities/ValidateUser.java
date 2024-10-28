@@ -28,7 +28,8 @@ public class ValidateUser {
 	            e.printStackTrace();
 	        }
 	    }
-
+	    
+	    //check if map contains user to validate
 	    public boolean validateUser(String username, String password) {
 	        return userMap.containsKey(username) && userMap.get(username).equals(password);
 	    }

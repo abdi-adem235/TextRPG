@@ -40,10 +40,7 @@ public class LoadMenu {
 						
 						int choice = scanner.nextInt();
 						scanner.nextLine();
-						//Dialogue dialogue = new Dialogue();
-					
-					
-						//System.out.println(choice);
+						
 						
 						switch(choice) {
 						

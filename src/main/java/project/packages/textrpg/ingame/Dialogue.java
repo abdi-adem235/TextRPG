@@ -12,7 +12,7 @@ public class Dialogue extends RpgMap {
 	private static Map<List <Integer>, String> dialogueMap = new HashMap<>();
 	
 
-	
+	//Dialogue constructor
 	public Dialogue() {
 		dialogueMap.put(List.of(0,1), "A lush, beautiful forest. Who knows what may be lurking...");
 		dialogueMap.put(List.of(1,0), "A lush, beautiful forest. Who knows what may be lurking...");
@@ -27,6 +27,7 @@ public class Dialogue extends RpgMap {
 	
 	}
 	
+	//getter method for dialogue
 	public String getDialogue(Player player) {
 		String dialogue = dialogueMap.getOrDefault(List.of(player.getX(),player.getY()),"...");
 		return dialogue;

@@ -44,7 +44,7 @@ public class Quest {
 	    return String.format("%-25s %-45s %-10s", questName, questDescription, questCompleted);
 	}
 
-	
+	//definition for quests
 	public static void questOne(Player player) {
 		if(player.getX() == 2 && player.getY() == 2) {
 			updateQuest("Find the Lost Emerald!!!");

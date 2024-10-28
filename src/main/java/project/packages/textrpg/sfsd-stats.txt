@@ -1,7 +1,0 @@
-Stats for sfsd: 
-Name: sfsd
-Job: Warrior
-Level: 1
-Health: 54
-Exp: 80
-Enemies defeated: 4

@@ -1,5 +1,7 @@
 package project.packages.textrpg.utilities;
 
+//class for changing text in console using ANSI escape codes
+
 public class ConsoleColors {
     // Reset color
     public static final String RESET = "\033[0m";  // Reset to default

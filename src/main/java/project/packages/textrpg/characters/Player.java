@@ -61,7 +61,7 @@ public abstract class Player {
 	public void gainHP(int gain) { //gain hp method for player depending on current hp amount
 		if(this.hp + gain <= 100) {
 			this.hp += gain;
-			System.out.println("You now have " +this.hp+ "total hp!");
+			System.out.println("You now have " +this.hp+ " total hp!");
 			
 		}
 		else if (this.hp + gain > 100){

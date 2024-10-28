@@ -1,7 +1,0 @@
-Stats for 22: 
-Name: 22
-Job: Mage
-Level: 1
-Health: 130
-Exp: 60
-Enemies defeated: 3

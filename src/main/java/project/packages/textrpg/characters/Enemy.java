@@ -23,14 +23,6 @@ public class Enemy {
 		}
 		
 		
-		public void generateEnemy(){
-			List<Enemy> enemyList = new ArrayList<>();
-			enemyList.add(new Enemy(100,"Wyvern",20));
-			enemyList.add(new Enemy(100,"Forest Elf",15));
-			enemyList.add(new Enemy(100,"Golem",20));
-			
-		}
-		
 		public void attackPlayer(Player player) {
 			
 	        Random random = new Random();

@@ -1,7 +1,0 @@
-Stats for ww: 
-Name: ww
-Job: Mage
-Level: 1
-Health: 72
-Exp: 80
-Enemies defeated: 4

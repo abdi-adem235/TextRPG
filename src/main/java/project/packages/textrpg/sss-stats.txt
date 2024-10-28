@@ -1,7 +1,0 @@
-Stats for sss: 
-Name: sss
-Job: Warrior
-Level: 1
-Health: 85
-Exp: 60
-Enemies defeated: 3
